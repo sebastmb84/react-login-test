@@ -2,6 +2,7 @@ import React from 'react';
 import {  StyleSheet, View, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { useState } from 'react'
+import axios from 'axios';
  
 const styles = StyleSheet.create({
     formWrapper: {
@@ -19,8 +20,8 @@ export default function loginScreen() {
     const handleSubmit = (e) => {
         e.prevent.default();
         console.log("not working!!")
-        const data = { email, password }
-        fetch("http://localhost:3000/users/sign_in", {
+        const data = { setUserEmail, setUserPassword }
+        axios.fetch("http://localhost:3000/users/sign_in", {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {

@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { logger } from 'redux-logger'
 import { createStore, applyMiddleware } from 'redux';
 import LoginScreen from './screens/LoginScreen';
+import SignIn from './screens/SignIn';
 
 
 const styles = StyleSheet.create({
@@ -32,7 +33,7 @@ export default function App() {
       
       <Image style={styles.tinyLogo} source={require('../loginReact/recursos/images/qualmark.png')}></Image>  
           
-      <LoginScreen/>
+      <SignIn/>
     </View>
   );
 }
