@@ -1,8 +1,8 @@
 import React from 'react';
 import {  StyleSheet, View, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import { useState } from 'react';
-
+import { useState } from 'react'
+ 
 const styles = StyleSheet.create({
     formWrapper: {
         width: 90,
@@ -11,15 +11,26 @@ const styles = StyleSheet.create({
       
   });
 
-class LoginScreen extends React.Component {
+export default function loginScreen() {
 
-    state={
-        email: "",
-        password: "",
-    }
+    const [email, setUserEmail] = useState();
+    const [password, setUserPassword] = useState();
+
+    const handleSubmit = (e) => {
+        e.prevent.default();
+        console.log("not working!!")
+        const data = { email, password }
+        fetch("http://localhost:3000/users/sign_in", {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                Content_Type: "application/json",
+            }
+        
+    })
+}
     
-    render() {
-        return (
+    return (
             <View>
                
                 <View style= {styles.inputView}>
@@ -28,7 +39,7 @@ class LoginScreen extends React.Component {
                         styles={styles.inputText }
                         placeholder="Email"
                         placeholderTextColor="black"
-                        onChangeText={text => this.useState({email:text})}               
+                        onChange={e => setUserEmail(e.target.value)}             
                     />
                     </p>
                     <p className="bg-light border rounded mt-2">
@@ -36,12 +47,12 @@ class LoginScreen extends React.Component {
                         styles={styles.inputText}
                         placeholder="password.."
                         placeholderTextColor="black"
-                        onChangeText={text => this.useState({password:text})}
+                        onChange={e => setUserPassword(e.target.value)}
                         
                      />
                     </p> 
 
-                    <button className="btn btn-light">Iniciar sesion</button>
+                    <button className="btn btn-light" onSubmit={handleSubmit}>Iniciar sesion</button>
                     
                 </View>
 
@@ -51,7 +62,4 @@ class LoginScreen extends React.Component {
         )
     }
 
-}
-
-export default LoginScreen; 
-
+    

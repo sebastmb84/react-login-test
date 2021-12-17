@@ -1,9 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
+
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { logger } from 'redux-logger'
+import { createStore, applyMiddleware } from 'redux';
 import LoginScreen from './screens/LoginScreen';
-import { withTheme } from 'react-native-elements';
 
 
 const styles = StyleSheet.create({
@@ -29,8 +30,9 @@ export default function App() {
     
     <View style={styles.container}>
       
-      <Image style={styles.tinyLogo} source={require('../loginReact/recursos/images/qualmark.png')}></Image>      <LoginScreen/>
-    
+      <Image style={styles.tinyLogo} source={require('../loginReact/recursos/images/qualmark.png')}></Image>  
+          
+      <LoginScreen/>
     </View>
   );
 }
