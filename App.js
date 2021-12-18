@@ -39,14 +39,8 @@ export default function App() {
         email,
         }
       });
-      if (response.status === 200) {
-        const result = JSON.stringify(response.data)
-        alert (`${result.success}`)
-        // alert(` You have created: ${JSON.stringify(response.data)}`);
-        let example = JSON.stringify(response.data)
-        console.log(example[0])
-        
-        sessionStorage.setItem('token', JSON.stringify(response.data.jwt));
+      if (response.status === 200) {    
+        sessionStorage.setItem('token', response.data.jwt);
         setIsLoading(false);
         setPassword('');
         setEmail('');
