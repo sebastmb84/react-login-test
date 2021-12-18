@@ -1,6 +1,7 @@
 import { Alert } from 'bootstrap';
 import React, { Component } from 'react'
 import { StyleSheet, TextInput, View, Button } from 'react-native'
+import axios, { Axios } from 'axios';
 
 export default class SignIn extends Component {
     constructor(props) {
@@ -15,6 +16,10 @@ export default class SignIn extends Component {
     onLogin(){
         const { email, password } = this.state;
         console.log("Alerta pasando info")
+    }
+    onClick(){
+        axios
+        .post("localhost:3000/users/sign_in")
     }
 
     render() {
